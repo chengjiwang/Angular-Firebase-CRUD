@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="blogApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-controller="MyController as ctrl">
+      <h1>Todo List</h1>
+      <form ng-submit="ctrl.addItem()">
+        <input type="text" ng-model="ctrl.newItem" name="newItem" />
+        <button type="submit">add</button>
+      </form>
+      <ul ng-repeat="item in ctrl.todoList">
+        <li ng-bind = "item.label">
+        </li>
+        <button ng-click="ctrl.deleteItem(item)">delete</button>
+        <button ng-click="ctrl.editItem(item)">edit</button>
+      </ul>
+  </body>
+
+</html>
