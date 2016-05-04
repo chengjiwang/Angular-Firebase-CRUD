@@ -1,25 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="blogApp">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular-Firebase-CRUD</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  
+
 </head>
 <body ng-controller="MyController as ctrl">
-      <h1>Todo List</h1>
-      <form ng-submit="ctrl.addItem()">
-        <input type="text" ng-model="ctrl.newItem" name="newItem" />
-        <button type="submit">add</button>
-      </form>
-      <ul ng-repeat="item in ctrl.todoList">
-        <li ng-bind = "item.label">
-        </li>
-        <button ng-click="ctrl.deleteItem(item)">delete</button>
-        <button ng-click="ctrl.editItem(item)">edit</button>
-      </ul>
-  </body>
+<section>
+    <div class="container">
+        <div class="col-sm-8">
+            <div class="panel panel-white post panel-shadow">
+                <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <a href="#"><b>Ryan Haywood</b></a> made a post.
+                        </div>
+                        <h6 class="text-muted time">1 minute ago</h6>
+                    </div>
+                </div>
+                <div class="post-description">
+                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>  
+                </div>
+                <div class="post-footer" id="#messagebox">
+                    <form ng-submit="ctrl.addItem()" >
+                        <input type="text" ng-model="ctrl.username"  name="name" id="name" placeholder="Type your name" >
+                        <textarea ng-model="ctrl.usermessage" id="message" class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
+                        <button class="btn btn-info" type="submit">Post New Message</button>
+                    </form>
+                    <ul class="comments-list" ng-repeat="item in ctrl.crudList">
+                        <li class="comment">
+                            <a class="pull-left" href="#">
+                                <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
+                            </a>
+                            <div class="comment-body">
+                                <div class="comment-heading">
+                                    <h4  class="user" ng-bind="item.name"> </h4>
+                                    <h5 class="time" ng-bind="item.time"> </h5>
+                                </div>
+                                <p ng-bind="item.message"></p>
+                            </div>
+                            <div class="stats">
+                                
+                                <button on-click='like:{{this}},{{key}}'  class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-up icon"></i>{{like}}
+                                </button>
+                                <button on-click='unlike:{{this}},{{key}}' class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-down icon"></i>{{unlike}}
+                                </button>
+                            </div>
+                        </li>
+                        <hr/>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
 
 </html>
