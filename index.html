@@ -50,12 +50,16 @@
                             </div>
                             <div class="stats">
                                 
-                                <button on-click='like:{{this}},{{key}}'  class="btn btn-default stat-item">
-                                    <i class="fa fa-thumbs-up icon"></i>{{like}}
+                                <button ng-click="ctrl.like(item)" class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-up icon" ng-bind="item.like"></i>
                                 </button>
-                                <button on-click='unlike:{{this}},{{key}}' class="btn btn-default stat-item">
-                                    <i class="fa fa-thumbs-down icon"></i>{{unlike}}
+                                <button ng-click='ctrl.unlike(item)' class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-down icon"  ng-bind="item.unlike"></i>
                                 </button>
+                                <div  class="pull-right ">
+                                    <button ng-click="ctrl.deleteItem(item)">delete</button>
+                                    <button ng-click="ctrl.editItem(item)">edit</button>
+                                </div>
                             </div>
                         </li>
                         <hr/>
