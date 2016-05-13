@@ -4,10 +4,8 @@
 		function($firebaseArray) {
 			var self = this,
 				ref = new Firebase("https://angular-cruddemo.firebaseio.com/");
-	    	self.crudList = $firebaseArray(ref);
-	    	
-			self.addItem = function(){
-				
+	    	self.crudList = $firebaseArray(ref);    	
+			self.addItem = function(){			
 				if(self.username){
 				   self.crudList.$add({ name: self.username , 
 				   					    message: self.usermessage ,
@@ -34,7 +32,7 @@
 			};
 			self.editItem = function(item){
 				item.message = prompt("edit" ,item.message);
-				self.crudList.$save(item);
+				self.crudList.$save(item);	
 			};
 			self.like = function(item){
 				item.like += 1;
